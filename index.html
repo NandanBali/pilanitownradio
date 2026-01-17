@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilani Town Radio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+    <div class="radio-container">
+        <header class="radio-header">
+            <img src="ptr.png" alt="Pilani Town Radio Logo" class="radio-logo" />
+        </header>
+
+        <div class="player-section">
+            <div class="visualizer">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <div class="track-info">
+                <span id="track-title" class="track-title">Now Playing</span>
+                <span id="track-artist" class="track-artist">—</span>
+            </div>
+
+            <audio id="audio-player" preload="none">
+                Your browser does not support the audio element.
+            </audio>
+
+            <button id="play-btn" class="play-btn" aria-label="Play">
+                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5,3 19,12 5,21" />
+                </svg>
+                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                </svg>
+            </button>
+
+            <span id="connection-status" class="status-badge">Ready</span>
+        </div>
+
+        <footer class="radio-footer">
+            <div class="wave-line"></div>
+            <p>Live from Pilani</p>
+        </footer>
+    </div>
+</body>
+
+</html>
