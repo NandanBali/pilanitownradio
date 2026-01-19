@@ -5,9 +5,9 @@ const artistEl = document.getElementById('track-artist');
 const statusEl = document.getElementById('connection-status');
 const visualizer = document.querySelector('.visualizer');
 
-const BACK_URL = "http://91.98.80.124:8000/";
+const BACK_URL = "http://ec3.yesstreaming.net:2275/";
 const STATUS_ENDPOINT = "status-json.xsl";
-const RADIO_ENDPOINT = "radio";
+const RADIO_ENDPOINT = "stream";
 const STREAM_URL = BACK_URL + RADIO_ENDPOINT;
 
 function setPlaying(isPlaying) {
@@ -86,14 +86,11 @@ playBtn.addEventListener('click', () => {
 
 async function fetchTrackInfo() {
     try {
-        const resp = await fetch(BACK_URL + STATUS_ENDPOINT);
-        const data = await resp.json();
-        const source = data.icestats.source;
-
-        if (source) {
-            titleEl.textContent = source.title || 'Unknown Track';
-            artistEl.textContent = source.artist || 'Pilani Town Radio';
-        }
+        const response = await fetch(BACK_URL + STATUS_ENDPOINT, { cache: 'no-store' });
+        const data = await response.json();
+        const source = data.icestats.source.title.split(' - ');
+        titleEl.textContent =  source[1] ?? 'Unknown Track';
+        artistEl.textContent = source[0] ?? 'Pilani Town Radio';
     } catch (error) {
         console.error('Error fetching track info:', error);
     }
